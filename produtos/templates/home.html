@@ -1,0 +1,50 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+
+{% block 'body' %}
+<div class="container text-center">
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <table class="table">
+    <thead class="thead">
+        <tr>
+        <th scope="col">Nome do Produto</th>
+        <th scope="col">Código do produto</th>
+        <th scope="col">Descrição do produto</th>
+        <th scope="col">Preço do produto</th>
+        <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for produto in produtos %}
+            <tr>
+            <td>{{produto.nome_produto}}</td>
+            <td>{{produto.codigo_produto}}</td>
+            <td>{{produto.descricao_produto}}</td>
+            <td>R$ {{produto.preco_produto}}</td>
+            <td>
+                <a type="submit" href="{% url 'editar_produto' produto.id %}">
+                    <button type="button" class="btn btn-warning">Editar</button>
+                </a>
+                <a type="submit" href="{% url 'deletar_produto' produto.id %}">
+                    <button type="button" class="btn btn-danger">Deletar</button>
+                </a>
+            </td>
+            </tr>
+            <tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <hr>
+    <a href="{% url 'cadastrar_produto' %}">
+        <button type="button" class="btn btn-outline-dark">Cadastrar novo produto</button>
+    </a>
+</div>
+
+{% endblock %}

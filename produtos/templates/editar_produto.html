@@ -1,0 +1,40 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+
+{% block 'body' %}
+    <div class="box-form" align="center">
+        <h2>Editar Produto</h2>
+        <hr style="border-color: #999999">
+
+        <form action="{% url 'editar_produto' produto.id %}" method="POST">{% csrf_token %}
+            <div class="form-group row"> 
+                <label class="col-sm-2">Nome:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="nome_produto" value="{{produto.nome_produto}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2">Código:</label>
+                <div class="col-sm-10"> 
+                    <input type="text" class="form-control" name="codigo_produto" value="{{produto.codigo_produto}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2">Descrição:</label>
+                <div class="col-sm-10"> 
+                    <input type="text" class="form-control" name="descricao_produto" value="{{produto.descricao_produto}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2">Preço:</label> 
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="preco_produto" value="{{produto.preco_produto}}" required>
+                </div>
+            </div>
+            <hr style="border-color: #999999">
+            <button type="submit" class="btn btn-outline-dark">Editar</button>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.box-form{
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    margin-top: 2%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px #0e0e0e;
+    height: 63vh;
+    font-weight: bold;
+    color: #201f1f;
+}
