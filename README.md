@@ -24,7 +24,7 @@ Instalar Python e Git.
 
 Clona o repositório:
 ```
-git clone https://github.com/CamilaFreitass/
+git clone https://github.com/CamilaFreitass/Best-Minds.git
 ```
 Instala os pré-requisitos:
 ```
