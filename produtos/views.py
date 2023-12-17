@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.messages import constants
+import re
 
 def home(request):
     produtos = Produto.objects.all()
@@ -18,15 +19,23 @@ def cadastrar_produto(request):
         descricao_produto = request.POST.get('descricao_produto')
         preco_produto = request.POST.get('preco_produto').replace(',', '.')
 
-        produto = Produto(nome_produto=nome_produto,
+        padrao_decimal = re.compile(r'^\d+(\.\d+)?$')
+
+        if padrao_decimal.match(preco_produto):
+
+            produto = Produto(nome_produto=nome_produto,
                         codigo_produto=codigo_produto,
                         descricao_produto=descricao_produto,
                         preco_produto=preco_produto)
         
-        produto.save()
-        messages.add_message(request, constants.SUCCESS, 'Produto cadastrado com sucesso')
-        return redirect(reverse('home'))
-    
+            produto.save()
+            messages.add_message(request, constants.SUCCESS, 'Produto cadastrado com sucesso')
+            return redirect(reverse('home'))
+        else:
+            messages.add_message(request, constants.ERROR, 'O preço do produto só pode conter números e uma virgula. Ex: 22,05')
+            return redirect(reverse('cadastrar_produto'))
+
+
 def editar_produto(request, id):
     produto = Produto.objects.get(id=id)
 
