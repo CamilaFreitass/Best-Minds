@@ -3,6 +3,11 @@
 
 
 {% block 'body' %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
     <div class="box-form" align="center">
         <h2>Editar Produto</h2>
         <hr style="border-color: #999999">

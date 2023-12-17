@@ -32,7 +32,7 @@ def cadastrar_produto(request):
             messages.add_message(request, constants.SUCCESS, 'Produto cadastrado com sucesso')
             return redirect(reverse('home'))
         else:
-            messages.add_message(request, constants.ERROR, 'O preço do produto só pode conter números e uma virgula. Ex: 22,05')
+            messages.add_message(request, constants.ERROR, 'O preço do produto só pode conter números e uma vírgula. Ex: 22,05')
             return redirect(reverse('cadastrar_produto'))
 
 
@@ -45,16 +45,24 @@ def editar_produto(request, id):
         descricao = request.POST.get('descricao_produto')
         preco = request.POST.get('preco_produto').replace(',', '.')
 
-        if nome and codigo and descricao and preco:
-            produto.nome_produto = nome
-            produto.codigo_produto = codigo
-            produto.descricao_produto = descricao
-            produto.preco_produto = preco
-            produto.save()
-            messages.add_message(request, constants.SUCCESS, 'Produto alterado com sucesso')
-            return redirect(reverse('home'))
+        padrao_decimal = re.compile(r'^\d+(\.\d+)?$')
+
+        if padrao_decimal.match(preco):
+
+
+            if nome and codigo and descricao and preco:
+                produto.nome_produto = nome
+                produto.codigo_produto = codigo
+                produto.descricao_produto = descricao
+                produto.preco_produto = preco
+                produto.save()
+                messages.add_message(request, constants.SUCCESS, 'Produto alterado com sucesso')
+                return redirect(reverse('home'))
+            else:
+                return HttpResponse("Produto Inválido")
+        
         else:
-            return HttpResponse("Produto Inválido")
+            messages.add_message(request, constants.ERROR, 'O preço do produto só pode conter números e uma vírgula. Ex: 22,05')
         
     return render(request, 'editar_produto.html', {'produto': produto})
 
