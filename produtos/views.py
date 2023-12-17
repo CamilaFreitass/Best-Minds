@@ -7,7 +7,10 @@ from django.contrib.messages import constants
 import re
 
 def home(request):
+    nome = request.GET.get('nome')
     produtos = Produto.objects.all()
+    if nome:
+        produtos = produtos.filter(nome_produto__contains=nome)
     return render(request, 'home.html', {'produtos': produtos})
 
 def cadastrar_produto(request):

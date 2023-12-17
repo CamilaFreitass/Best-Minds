@@ -1,10 +1,10 @@
 ## DESAFIO EVERYMIND - Best Minds 2024
 
-Essa aplicação foi desenvolvida conforme os requisitos do DESAFIO EVERYMIND - Best Minds 2024. Dentro dessa aplicação tem uma tabela na página principal para demonstrar os produtos cadastrados e também tem as opções de criar, editar e deletar cada produto.
+Essa aplicação foi desenvolvida conforme os requisitos do DESAFIO EVERYMIND - Best Minds 2024. Dentro dessa aplicação tem uma tabela na página principal para demonstrar os produtos cadastrados e também tem as opções de criar, editar e deletar cada produto. Além dos requisitos solicitados também adicionei um campo de busca para facilitar a procura de produtos, e mensagens para informar o usuário conforme cada ação. 
 
-Aplicação desenvolvida com Python e Django (framework) e utilização do banco de dados SQLite que é padrão do Django, mas há possibilidades de utilizar outros bancos de dados. 
+Aplicação desenvolvida com Python e Django (framework) e utilização do banco de dados SQLite, que é padrão do Django, mas há possibilidades de utilizar outros bancos de dados. 
 
-![Alt text](image.png)
+![Alt text](image-2.png)
 
 ### Pré-requisitos para rodar a aplicação:
 
@@ -47,6 +47,8 @@ http://127.0.0.1:8000/produtos/home/
 * cadastrar novos produtos
 * Editar cada produto
 * deletar cada produto 
+* buscar produto pelo nome
+* mensagens de aviso
 
 ### Entidades/Tabelas: 
 
