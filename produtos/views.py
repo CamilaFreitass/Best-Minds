@@ -5,13 +5,24 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.messages import constants
 import re
+from django.core.paginator import Paginator
 
 def home(request):
     nome = request.GET.get('nome')
     produtos = Produto.objects.all()
+
+    # especificando quantos produtos vão ter por página
+    produtos_pagina = Paginator(produtos, 5)
+    # estou pegando o parametro da página que veio pela url, no caso o número da página
+    page_num = request.GET.get('page')
+    # está pegando a página que foi passada por meio da url
+    page = produtos_pagina.get_page(page_num)
+
     if nome:
         produtos = produtos.filter(nome_produto__contains=nome)
-    return render(request, 'home.html', {'produtos': produtos})
+    # em vez de enviar os usuários vamos enviar apenas os usuários por página 
+    return render(request, 'home.html', {'page': page})
+
 
 def cadastrar_produto(request):
     if request.method == "GET":
