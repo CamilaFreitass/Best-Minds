@@ -4,7 +4,7 @@ Essa aplicação foi desenvolvida conforme os requisitos do DESAFIO EVERYMIND - 
 
 Aplicação desenvolvida com Python e Django (framework) e utilização do banco de dados SQLite, que é padrão do Django, mas há possibilidades de utilizar outros bancos de dados. 
 
-![Alt text](image-2.png)
+![Alt text](image-1.png)
 
 ### Pré-requisitos para rodar a aplicação:
 

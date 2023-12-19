@@ -12,7 +12,7 @@ def home(request):
     produtos = Produto.objects.all()
 
     # especificando quantos produtos vão ter por página
-    produtos_pagina = Paginator(produtos, 5)
+    produtos_pagina = Paginator(produtos, 4)
     # estou pegando o parametro da página que veio pela url, no caso o número da página
     page_num = request.GET.get('page')
     # está pegando a página que foi passada por meio da url
